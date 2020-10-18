@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+import './MicroFrontend';
 import './App.css';
+import MicroFrontend from './MicroFrontend';
+
+const {
+  REACT_APP_PRODUCTS_HOST: productsHost,
+  REACT_APP_OFFERS_HOST: offersHost
+} = process.env;
 
 function App() {
+  console.log(process.env);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>Welcome To The Store</h3>
+      <div id="offers-container">
+        <MicroFrontend name="offers" host={offersHost}></MicroFrontend>
+      </div>
+      <div id="products-container">
+        <MicroFrontend name="products" host={productsHost}></MicroFrontend>
+      </div>
     </div>
   );
 }
